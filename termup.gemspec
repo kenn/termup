@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{termup}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kenn Ejima"]
@@ -23,13 +23,20 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
+    "README.md",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "bin/termup",
+    "lib/templates/template.yml",
     "lib/termup.rb",
+    "lib/termup/base.rb",
+    "lib/termup/cli.rb",
     "spec/spec_helper.rb",
-    "spec/termup_spec.rb"
+    "spec/termup_spec.rb",
+    "termup.gemspec"
   ]
   s.homepage = %q{http://github.com/kenn/termup}
   s.licenses = ["MIT"]
