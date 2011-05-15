@@ -6,6 +6,12 @@ module Termup
   class Cli < Thor
     include Thor::Actions
 
+    class << self
+      def source_root
+        File.expand_path('../../',__FILE__)
+      end
+    end
+
     map "c" => :create
     map "e" => :edit
     map "l" => :list
