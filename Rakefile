@@ -17,11 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "termup"
   gem.homepage = "http://github.com/kenn/termup"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Initialize terminal tabs with preset commands"
+  gem.description = "Initialize terminal tabs with preset commands"
   gem.email = "kenn.ejima@gmail.com"
   gem.authors = ["Kenn Ejima"]
-  # dependencies defined in Gemfile
+  gem.executables = ["termup"]
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -31,19 +31,4 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-end
-
 task :default => :spec
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "termup #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
