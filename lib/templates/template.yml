@@ -1,12 +1,17 @@
 # COMMENT OF SCRIPT HERE
 ---
-- tab1:
-  - cd ~/foo/bar
-  - git status
-- tab2:
-  - mysql -u root
-  - show databases;
-- tab3: echo "hello world"
-- tab4:
-  - cd ~/foo/project
-  - autotest
+tabs:
+  - tab1:
+    - cd ~/foo/bar
+    - git status
+  - tab2:
+    - mysql -u root
+    - show databases;
+  - tab3: echo "hello world"
+  - tab4:
+    - cd ~/foo/project
+    - autotest
+options:
+  iterm:
+    width: 2
+    height: 2

@@ -25,6 +25,7 @@ module Termup
 
     desc "edit PROJECT", "Edit termup project (Shortcut: e)"
     def edit(project)
+      create(project) unless File.exists?(path(project))
       say "please set $EDITOR in your .bash_profile." and return unless editor = ENV['EDITOR']
       system("#{editor} #{path(project)}")
     end
