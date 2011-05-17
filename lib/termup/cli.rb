@@ -29,19 +29,21 @@ module Termup
       say "please set $EDITOR in your .bash_profile." and return unless editor = ENV['EDITOR']
       system("#{editor} #{path(project)}")
     end
-    
+
     desc "list", "List termup projects (Shortcut: l)"
     def list
       projects = Dir["#{TERMUP_DIR}/*.yml"].map{|file| File.basename(file,'.yml') }
       say "Your projects: #{projects.join(', ')}"
     end
-    
+
     desc "start PROJECT", "Start termup project (Shortcut: s)"
     def start(project)
+      say "project \"#{project}\" doesn't exist!" and return unless File.exists?(path(project))
       Termup::Base.new(project)
     end
+
+    protected
     
-  protected
     def path(project)
       "#{TERMUP_DIR}/#{project}.yml"
     end
