@@ -16,8 +16,8 @@ module Termup
 
       @project = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
 
-      # Split panes for iTerm
-      split_panes if @frontmost == "iTerm" and @project['options']['iterm']
+      # Split panes for iTerm 2
+      split_panes if iterm2? and @project['options']['iterm']
 
       @project['tabs'].each do |hash|
         tabname = hash.keys.first
@@ -25,10 +25,10 @@ module Termup
         cmds = [cmds].flatten
         tab = new_tab
         cmds.each do |cmd|
-          if iterm2?
-            @terminal.current_terminal.current_session.write(:text => "#{cmd}")
-          else
+          if terminal?
             @terminal.do_script(cmd, :in => tab)
+          else
+            @terminal.current_terminal.current_session.write(:text => "#{cmd}")
           end
         end
       end
