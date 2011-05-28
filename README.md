@@ -1,9 +1,13 @@
 Termup
 ======
 
-Initialize your terminal tabs with preset commands.
+Initialize your terminal tabs (or split panes) with preset commands.
 
-Compatible with Terminal.app on Mac OS X 10.6 and Ruby 1.9.2.
+Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.6 and Ruby 1.9.2 / 1.8.7.
+
+Ever wanted to automate everyday routine on the terminal in a simple way? Termup is right here for you.
+
+![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
 Installation
 ------------
@@ -33,14 +37,17 @@ And now you're good to go:
     ---
     tabs:
       - tab1:
-        - cd ~/foo/bar
+        - cd ~/projects/foo
         - git status
+        - mate .
       - tab2:
         - mysql -u root
         - show databases;
-      - tab3: echo "hello world"
+      - tab3:
+        - cd ~/projects/foo
+        - tail -f log/development.log
       - tab4:
-        - cd ~/foo/project
+        - cd ~/projects/foo
         - autotest
     options:
       iterm:
