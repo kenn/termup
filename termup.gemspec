@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{termup}
-  s.version = "1.2.1"
+  s.version = "1.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kenn Ejima"]
-  s.date = %q{2011-05-27}
+  s.date = %q{2011-07-08}
   s.default_executable = %q{termup}
   s.description = %q{Initialize terminal tabs with preset commands}
   s.email = %q{kenn.ejima@gmail.com}
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/termup",
+    "images/split_panes.png",
     "lib/templates/template.yml",
     "lib/termup.rb",
     "lib/termup/base.rb",
