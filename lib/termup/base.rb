@@ -4,7 +4,7 @@ require 'yaml'
 module Termup
   class Base
     ITERM1 = /^0\.10/
-    ITERM2 = /^0\.20/
+    ITERM2 = /^1.0/
 
     include Appscript
 
