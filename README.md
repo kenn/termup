@@ -5,7 +5,7 @@ Automate opening up terminal tabs (or split panes) with a set of routine command
 
 It's the easiest way to get started for your projects every day.
 
-Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.8 and Ruby 1.9.3 / 1.8.7.
+Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 - 1.9.3.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
