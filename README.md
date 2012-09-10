@@ -1,18 +1,22 @@
 Termup
 ======
 
-Initialize your terminal tabs (or split panes) with preset commands.
+Automate opening up terminal tabs (or split panes) with a set of routine commands.
 
-Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.6 and Ruby 1.9.2 / 1.8.7.
+It's the easiest way to get started for your projects every day.
 
-Ever wanted to automate everyday routine on the terminal in a simple way? Termup is right here for you.
+Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.8 and Ruby 1.9.3 / 1.8.7.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
 Installation
 ------------
 
-    $ gem install termup
+```sh
+$ gem install termup
+```
+
+Note that you need to prepend `sudo` if you're using the OSX pre-installed Ruby.
 
 Usage
 -----
@@ -21,38 +25,46 @@ Usage
 
 Call the following command:
 
-    $ termup create new_project
+```sh
+$ termup create new_project
+```
 
 This will create a new project at `~/.config/termup/new_project.yml`. Edit the file:
 
-    $ termup edit new_project
+```sh
+$ termup edit new_project
+```
 
 And now you're good to go:
 
-    $ termup start new_project
+```sh
+$ termup start new_project
+```
 
 ### YAML Syntax ###
 
-    # ~/.config/termup/new_project.yml
-    ---
-    tabs:
-      - tab1:
-        - cd ~/projects/foo
-        - git status
-        - mate .
-      - tab2:
-        - mysql -u root
-        - show databases;
-      - tab3:
-        - cd ~/projects/foo
-        - tail -f log/development.log
-      - tab4:
-        - cd ~/projects/foo
-        - autotest
-    options:
-      iterm:
-        width: 2
-        height: 2
+```yaml
+# ~/.config/termup/new_project.yml
+---
+tabs:
+  - tab1:
+    - cd ~/projects/foo
+    - git status
+    - mate .
+  - tab2:
+    - mysql -u root
+    - show databases;
+  - tab3:
+    - cd ~/projects/foo
+    - tail -f log/development.log
+  - tab4:
+    - cd ~/projects/foo
+    - autotest
+options:
+  iterm:
+    width: 2
+    height: 2
+```
 
 Tabs can contain a single command, or YAML arrays to execute multiple commands.
 
@@ -60,7 +72,9 @@ Tabs can contain a single command, or YAML arrays to execute multiple commands.
 
 Commands have a shortcut for even fewer keystrokes.
 
-    $ termup s new_project
+```sh
+$ termup s new_project
+```
 
 That's equivalent to `termup start new_project`.
 
@@ -68,10 +82,12 @@ That's equivalent to `termup start new_project`.
 
 Specify iTerm option to use split pane.
 
-    options:
-      iterm:
-        width: 2
-        height: 2
+```yaml
+options:
+  iterm:
+    width: 2
+    height: 2
+```
 
 The setting above turns to:
 
@@ -84,3 +100,5 @@ The setting above turns to:
     #   2   #   4   #
     #       #       #
     #################
+
+Enjoy!
