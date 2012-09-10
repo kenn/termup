@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../lib/termup',__FILE__)
+
+# Abort beautifully with ctrl+c.
+Signal.trap(:INT) { abort "\nAborting." }
+
+require 'termup'
 Termup::Cli.start

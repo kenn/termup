@@ -1,4 +1,4 @@
-$:.unshift(File.expand_path("..", __FILE__))
-
-require 'termup/cli'
-require 'termup/base'
+module Termup
+  autoload :Cli,  'termup/cli'
+  autoload :Base, 'termup/base'
+end
