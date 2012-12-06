@@ -3,5 +3,9 @@
 # Abort beautifully with ctrl+c.
 Signal.trap(:INT) { abort "\nAborting." }
 
+# For debugging local script and not conflicting with the installed gem
+# require File.expand_path(File.join(File.dirname(__FILE__), "../lib/termup/cli.rb"))
+# require File.expand_path(File.join(File.dirname(__FILE__), "../lib/termup/base.rb"))
+
 require 'termup'
 Termup::Cli.start
