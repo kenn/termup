@@ -17,7 +17,8 @@ module Termup
     map 'l' => :list
     map 's' => :start
 
-    desc 'create PROJECT', 'Create termup project (Shortcut: c)'
+    desc 'create PROJECT', 'Create termup project (Shortcut: c). Use --iterm2 if you would like to use an advanced layout (split panes, etc...)'
+    method_option :iterm2, :type => :boolean, :aliases => "iterm2", :required => false
     def create(project)
       edit(project)
     end
@@ -26,7 +27,11 @@ module Termup
     def edit(project)
       unless File.exists?(path(project))
         empty_directory TERMUP_DIR
-        template 'templates/template.yml', path(project)
+        if options['iterm2']
+          template 'templates/iterm2.yml', path(project)
+        else  
+          template 'templates/template.yml', path(project)
+        end
       end
       say 'please set $EDITOR in ~/.bash_profile' and return unless editor = ENV['EDITOR']
       system("#{editor} #{path(project)}")

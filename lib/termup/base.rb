@@ -16,6 +16,9 @@ module Termup
 
       @project = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
 
+      # Split panes for iTerm 2 layout with iterm commands
+      return split_panes2 if iterm2? and @project['options']['iterm2']
+
       # Split panes for iTerm 2
       split_panes if iterm2? and @project['options']['iterm']
 
@@ -61,6 +64,64 @@ module Termup
         end
         # Move to the right
         @apps[@frontmost].keystroke(']', :using => :command_down)
+      end
+    end
+
+    def split_panes2
+      @project['tabs'].each_with_index do |hash, index|
+        tabname = hash.keys.first
+        tab = hash[tabname]
+        @terminal.current_terminal.current_session.name.set(tabname)
+
+        if tab['background']
+          @terminal.current_terminal.current_session.background_color.set(tab['background'])
+        end
+
+        if tab['foreground']
+          @terminal.current_terminal.current_session.foreground_color.set(tab['foreground'])
+        end
+
+        if tab['transparency']
+          @terminal.current_terminal.current_session.transparency.set(tab['transparency'])
+        end
+
+        tab['commands'].each do |cmd|
+          @terminal.current_terminal.current_session.write(:text => "#{cmd}")
+        end
+
+        tab['layout'] ||= []
+        if tab['layout'].empty? and index < @project['tabs'].size - 1
+          tab['layout'] << 'new_tab' 
+        end
+
+        tab['layout'].each do |cmd|
+          case cmd
+          when 'new_tab'
+            @apps[@frontmost].keystroke('t', :using => [ :command_down ] )
+          when 'close_tab'
+            @apps[@frontmost].keystroke('w', :using => [ :command_down ] )
+          when 'go_to_previous_tab'
+            @apps[@frontmost].key_code(123, :using => [ :command_down ] )
+          when 'go_to_next_tab'
+            @apps[@frontmost].key_code(124, :using => [ :command_down ] )
+          when 'split_horizontally'
+            @apps[@frontmost].keystroke('d', :using => [ :command_down, :shift_down ] )
+          when 'split_vertically'
+            @apps[@frontmost].keystroke('d', :using => [ :command_down ] )
+          when 'go_left'
+            @apps[@frontmost].key_code(123, :using => [ :command_down, :option_down ] )
+          when 'go_right'
+            @apps[@frontmost].key_code(124, :using => [ :command_down, :option_down ] )
+          when 'go_down'
+            @apps[@frontmost].key_code(125, :using => [ :command_down, :option_down ] )
+          when 'go_up'
+            @apps[@frontmost].key_code(126, :using => [ :command_down, :option_down ] )
+          else
+            raise "Unknown iTerm2 command #{cmd}"
+          end
+
+          sleep 0.01
+        end
       end
     end
 
