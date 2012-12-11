@@ -6,18 +6,23 @@ module Termup
       @handler = Termup::Handler.new
       @terminal = @handler.app_process
 
-      @project = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
+      project = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
+      @options = project['options']
+      @tabs = project['tabs']
+
+      # Compatibility checking
+      if @tabs.is_a?(Array) and @tabs.first.is_a?(Hash)
+        abort 'YAML syntax for config has been changed. See https://github.com/kenn/termup for details.'
+      end
 
       # Split panes for iTerm 2 layout with iterm commands
-      return split_panes2 if @handler.iterm? and @project['options']['iterm2']
+      return split_panes2 if @handler.iterm? and @options['iterm2']
 
       # Split panes for iTerm 2
-      split_panes if @handler.iterm? and @project['options']['iterm']
+      split_panes if @handler.iterm? and @options['iterm']
 
-      @project['tabs'].each do |hash|
-        tabname = hash.keys.first
-        cmds = hash.values.first
-        cmds = [cmds].flatten
+      @tabs.each do |tabname, cmds|
+        @terminal.current_terminal.current_session.name.set(tabname) if @handler.iterm?
         tab = new_tab
         cmds.each do |cmd|
           if @handler.terminal?
@@ -44,14 +49,14 @@ module Termup
 
     def split_panes
       # Virtical splits
-      (@project['options']['iterm']['width'] - 1).times do |i|
+      (@options['iterm']['width'] - 1).times do |i|
         @handler.keystroke('d', :using => :command_down)
       end
       # Back to home
       @handler.keystroke(']', :using => :command_down)
       # Horizontal splits
-      @project['options']['iterm']['width'].times do |i|
-        (@project['options']['iterm']['height'] - 1).times do |i|
+      @options['iterm']['width'].times do |i|
+        (@options['iterm']['height'] - 1).times do |i|
           @handler.keystroke('d', :using => [ :command_down, :shift_down ])
         end
         # Move to the right
@@ -60,9 +65,7 @@ module Termup
     end
 
     def split_panes2
-      @project['tabs'].each_with_index do |hash, index|
-        tabname = hash.keys.first
-        tab = hash[tabname]
+      @tabs.each_with_index do |(tabname, tab), index|
         @terminal.current_terminal.current_session.name.set(tabname)
 
         if tab['properties']
@@ -76,7 +79,7 @@ module Termup
         end
 
         tab['layout'] ||= []
-        if tab['layout'].empty? and index < @project['tabs'].size - 1
+        if tab['layout'].empty? and index < @tabs.size - 1
           tab['layout'] << 'new_tab' 
         end
 

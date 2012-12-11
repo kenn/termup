@@ -14,28 +14,28 @@
 #
 ---
 tabs:
-  - tab1:
-      commands:
-        - echo tab1
-      layout: 
-        - split_vertically
-  - tab2:
-      commands:
-        - echo tab2
-      layout: 
-        - split_horizontally
-  - tab3:
-      commands:
-        - echo tab3
-      layout: 
-        - split_horizontally
-  - tab4:
-      properties:
-        foreground_color: yellow
-        background_color: blue
-        transparency: 0.1
-      commands:
-        - echo tab4
+  tab1:
+    commands:
+      - echo tab1
+    layout:
+      - split_vertically
+  tab2:
+    commands:
+      - echo tab2
+    layout:
+      - split_horizontally
+  tab3:
+    commands:
+      - echo tab3
+    layout:
+      - split_horizontally
+  tab4:
+    properties:
+      foreground_color: yellow
+      background_color: blue
+      transparency: 0.1
+    commands:
+      - echo tab4
 
 options:
   iterm2: true
