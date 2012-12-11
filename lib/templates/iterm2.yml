@@ -30,9 +30,10 @@ tabs:
       layout: 
         - split_horizontally
   - tab4:
-      foreground: yellow
-      background: blue
-      transparency: 0.1
+      properties:
+        foreground_color: yellow
+        background_color: blue
+        transparency: 0.1
       commands:
         - echo tab4
 

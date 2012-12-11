@@ -1,4 +1,5 @@
 module Termup
-  autoload :Cli,  'termup/cli'
-  autoload :Base, 'termup/base'
+  autoload :Base,     'termup/base'
+  autoload :Cli,      'termup/cli'
+  autoload :Handler,  'termup/handler'
 end
