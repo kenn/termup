@@ -80,11 +80,12 @@ $ termup s myproject
 
 That's equivalent to `termup start myproject`.
 
-### iTerm 2 Split Pane Support ###
+iTerm 2 Split Pane Support
+--------------------------
 
 There are two options to deal with split panes on iTerm 2: `--iterm_basic` and `--iterm_advanced`
 
-#### --iterm_basic
+### --iterm_basic
 
 ```sh
 termup create myproject --iterm_basic
@@ -111,7 +112,7 @@ The setting above will generate four panes in the following layout.
     #       #       #
     #################
 
-#### --iterm_advanced
+### --iterm_advanced
 
 ```sh
 termup create myproject --iterm_advanced
@@ -125,22 +126,22 @@ This will generate a config file in an advanced format:
 tabs:
   pane1:
     commands:
-      - echo tab1
+      - echo pane1
     layout:
       - split_vertically
   pane2:
     commands:
-      - echo tab2
+      - echo pane2
     layout:
       - split_horizontally
   pane3:
     commands:
-      - echo tab3
+      - echo pane3
     layout:
       - split_horizontally
   pane4:
     commands:
-      - echo tab4
+      - echo pane4
 ```
 
 The setting above will generate four panes in the following layout.
@@ -159,7 +160,7 @@ The setting above will generate four panes in the following layout.
     #       #       #
     #################
 
-Available layout commands are:
+Available layout commands:
 
 ```ruby
 new_tab
