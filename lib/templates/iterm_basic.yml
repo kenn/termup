@@ -2,13 +2,13 @@
 ---
 tabs:
   pane1:
-    - echo tab1
+    - echo pane1
   pane2:
-    - echo tab2
+    - echo pane2
   pane3:
-    - echo tab3
+    - echo pane3
   pane4:
-    - echo tab4
+    - echo pane4
 options:
   iterm:
     width: 2

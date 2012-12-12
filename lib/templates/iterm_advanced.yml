@@ -3,23 +3,23 @@
 tabs:
   pane1:
     commands:
-      - echo tab1
+      - echo pane1
     layout:
       - split_vertically
   pane2:
     commands:
-      - echo tab2
+      - echo pane2
     layout:
       - split_horizontally
   pane3:
     commands:
-      - echo tab3
+      - echo pane3
     layout:
       - split_horizontally
   pane4:
+    commands:
+      - echo pane4
     properties:
       foreground_color: yellow
       background_color: blue
       transparency: 0.1
-    commands:
-      - echo tab4
