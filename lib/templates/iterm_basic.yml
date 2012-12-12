@@ -1,11 +1,15 @@
 # COMMENT OF SCRIPT HERE
 ---
 tabs:
-  tab1:
+  pane1:
     - echo tab1
-  tab2:
+  pane2:
     - echo tab2
-  tab3:
+  pane3:
     - echo tab3
-  tab4:
+  pane4:
     - echo tab4
+options:
+  iterm:
+    width: 2
+    height: 2

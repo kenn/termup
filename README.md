@@ -9,7 +9,7 @@ Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
-For iTerm 1, use v1.3.1 - `gem install termup -v=1.3.1`
+**iTerm 1 users** the current version is not compatible with iTerms 1. Use v1.3.1 - `gem install termup -v=1.3.1`
 
 Installation
 ------------

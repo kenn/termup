@@ -17,8 +17,9 @@ module Termup
     map 'l' => :list
     map 's' => :start
 
-    desc 'create PROJECT', 'Create termup project (Shortcut: c). Use --iterm2 if you would like to use an advanced layout (split panes, etc...)'
-    method_option :iterm2, :type => :boolean, :aliases => "iterm2", :required => false
+    desc 'create PROJECT', 'Create termup project (Shortcut: c, Options: --iterm_basic / --iterm_advanced)'
+    method_option :iterm_basic,     :type => :boolean, :required => false
+    method_option :iterm_advanced,  :type => :boolean, :required => false
     def create(project)
       edit(project)
     end
@@ -27,8 +28,10 @@ module Termup
     def edit(project)
       unless File.exists?(path(project))
         empty_directory TERMUP_DIR
-        if options['iterm2']
-          template 'templates/iterm2.yml', path(project)
+        if options['iterm_advanced']
+          template 'templates/iterm_advanced.yml', path(project)
+        elsif options['iterm_basic']
+          template 'templates/iterm_basic.yml', path(project)
         else  
           template 'templates/template.yml', path(project)
         end

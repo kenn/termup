@@ -5,15 +5,16 @@ module Termup
     def initialize(project)
       @handler = Termup::Handler.new
 
-      project = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
-      @options = project['options'] || {}
-      @iterm_options = @options['iterm']
-      @tabs = project['tabs']
+      config = YAML.load(File.read("#{TERMUP_DIR}/#{project}.yml"))
+      @tabs = config['tabs']
 
       # Config file compatibility checking
       if @tabs.is_a?(Array) and @tabs.first.is_a?(Hash)
         abort 'YAML syntax for config has been changed. See https://github.com/kenn/termup for details.'
       end
+
+      @options = config['options'] || {}
+      @iterm_options = @options['iterm']
 
       # Split panes for iTerm 2
       split_panes if @handler.iterm? and @iterm_options
@@ -46,7 +47,7 @@ module Termup
               layout :new_tab
               sleep 0.01 # Allow some time to complete opening a new tab
             else
-              layout :goto_next_tab
+              layout :goto_next_tab # Back home
             end
           end
         end
