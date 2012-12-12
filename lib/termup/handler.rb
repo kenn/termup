@@ -30,9 +30,9 @@ module Termup
       activate
       case key
       when Integer
-        app('System Events').key_code key, using && { :using => using }
+        app('System Events').processes[app_name].key_code key, using && { :using => using }
       when String
-        app('System Events').keystroke key, using && { :using => using }
+        app('System Events').processes[app_name].keystroke key, using && { :using => using }
       end
     end
 
