@@ -5,9 +5,11 @@ Automate opening up terminal tabs (or split panes) with a set of routine command
 
 It's the easiest way to get started for your projects every day.
 
-Compatible with Terminal.app, iTerm and iTerm2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 - 1.9.3.
+Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 - 1.9.3.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
+
+For iTerm 1, use v1.3.1 - `gem install termup -v=1.3.1`
 
 Installation
 ------------
@@ -26,38 +28,38 @@ Usage
 Call the following command:
 
 ```sh
-$ termup create new_project
+$ termup create myproject
 ```
 
-This will create a new project at `~/.config/termup/new_project.yml`. Edit the file:
+This will create a new project at `~/.config/termup/myproject.yml`. Edit the file:
 
 ```sh
-$ termup edit new_project
+$ termup edit myproject
 ```
 
 And now you're good to go:
 
 ```sh
-$ termup start new_project
+$ termup start myproject
 ```
 
 ### YAML Syntax ###
 
 ```yaml
-# ~/.config/termup/new_project.yml
+# ~/.config/termup/myproject.yml
 ---
 tabs:
-  - tab1:
+  tab1:
     - cd ~/projects/foo
     - git status
-    - mate .
-  - tab2:
+    - subl .
+  tab2:
     - mysql -u root
     - show databases;
-  - tab3:
+  tab3:
     - cd ~/projects/foo
     - tail -f log/development.log
-  - tab4:
+  tab4:
     - cd ~/projects/foo
     - autotest
 options:
@@ -73,10 +75,10 @@ Tabs can contain a single command, or YAML arrays to execute multiple commands.
 Commands have a shortcut for even fewer keystrokes.
 
 ```sh
-$ termup s new_project
+$ termup s myproject
 ```
 
-That's equivalent to `termup start new_project`.
+That's equivalent to `termup start myproject`.
 
 ### iTerm 2 Split Pane Support ###
 

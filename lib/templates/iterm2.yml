@@ -1,41 +1,25 @@
 # COMMENT OF SCRIPT HERE
-#
-# Available layout commands are:
-#    new_tab 
-#    close_tab
-#    go_to_previous_tab
-#    go_to_next_tab
-#    split_horizontally
-#    split_vertically
-#    go_left
-#    go_right
-#    go_down
-#    go_up
-#
 ---
 tabs:
-  tab1:
+  pane1:
     commands:
       - echo tab1
     layout:
       - split_vertically
-  tab2:
+  pane2:
     commands:
       - echo tab2
     layout:
       - split_horizontally
-  tab3:
+  pane3:
     commands:
       - echo tab3
     layout:
       - split_horizontally
-  tab4:
+  pane4:
     properties:
       foreground_color: yellow
       background_color: blue
       transparency: 0.1
     commands:
       - echo tab4
-
-options:
-  iterm2: true
