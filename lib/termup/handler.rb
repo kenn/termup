@@ -75,7 +75,7 @@ module Termup
     end
 
     def term_like_pids
-      @term_like_pids ||= `ps x | grep Term`.split("\n").reject{|i| i =~ /grep/ }.map{|i| i.match(/^\d+/).to_s.to_i }
+      @term_like_pids ||= `ps x | grep Term`.split("\n").reject{|i| i =~ /grep/ }.map{|i| i.match(/\d+/).to_s.to_i }
     end
 
     def layout(command)
