@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Termup by kenn</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Termup</h1>
+        <p>Automate opening up terminal tabs (or split panes) with a set of routine commands on OSX.</p>
+
+        <p class="view"><a href="https://github.com/kenn/termup">View the Project on GitHub <small>kenn/termup</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kenn/termup/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kenn/termup/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kenn/termup">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Termup</h1>
+
+<p>Automate opening up terminal tabs (or split panes) with a set of routine commands.</p>
+
+<p>It's the easiest way to get started for your projects every day.</p>
+
+<p>Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 - 1.9.3.</p>
+
+<p><img src="https://github.com/kenn/termup/raw/master/images/split_panes.png" alt="Split Panes"></p>
+
+<p><strong>iTerm 1 users:</strong> Termup 2.0 and up is not compatible with iTerm 1. Install 1.3.1 by <code>gem install termup -v=1.3.1</code></p>
+
+<h2>Installation</h2>
+
+<div class="highlight"><pre><span class="nv">$ </span>gem install termup
+</pre></div>
+
+<p>Note that you need to prepend <code>sudo</code> if you're using the OSX pre-installed Ruby.</p>
+
+<h2>Usage</h2>
+
+<h3>Getting Started</h3>
+
+<p>Call the following command:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>termup create myproject
+</pre></div>
+
+<p>This will create a new project at <code>~/.config/termup/myproject.yml</code>. Edit the file:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>termup edit myproject
+</pre></div>
+
+<p>And now you're good to go:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>termup start myproject
+</pre></div>
+
+<h3>YAML Syntax</h3>
+
+<div class="highlight"><pre><span class="c1"># ~/.config/termup/myproject.yml</span>
+<span class="nn">---</span>
+<span class="l-Scalar-Plain">tabs</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">tab1</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd ~/projects/foo</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git status</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">subl .</span>
+  <span class="l-Scalar-Plain">tab2</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mysql -u root</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">show databases;</span>
+  <span class="l-Scalar-Plain">tab3</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd ~/projects/foo</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">tail -f log/development.log</span>
+  <span class="l-Scalar-Plain">tab4</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd ~/projects/foo</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">autotest</span>
+<span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">iterm</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">width</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+    <span class="l-Scalar-Plain">height</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+</pre></div>
+
+<p>Tabs can contain a single command, or YAML arrays to execute multiple commands.</p>
+
+<h3>Shortcut</h3>
+
+<p>Commands have a shortcut for even fewer keystrokes.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>termup s myproject
+</pre></div>
+
+<p>That's equivalent to <code>termup start myproject</code>.</p>
+
+<h2>iTerm 2 Split Pane Support</h2>
+
+<p>There are two options to deal with split panes on iTerm 2: <code>--iterm_basic</code> and <code>--iterm_advanced</code></p>
+
+<h3>--iterm_basic</h3>
+
+<div class="highlight"><pre>termup create myproject --iterm_basic
+</pre></div>
+
+<p>This will generate additional options in the config file:</p>
+
+<div class="highlight"><pre><span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">iterm</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">width</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+    <span class="l-Scalar-Plain">height</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+</pre></div>
+
+<p>The setting above will generate four panes in the following layout.</p>
+
+<pre><code>#################
+#       #       #
+#   1   #   3   #
+#       #       #
+#################
+#       #       #
+#   2   #   4   #
+#       #       #
+#################
+</code></pre>
+
+<h3>--iterm_advanced</h3>
+
+<div class="highlight"><pre>termup create myproject --iterm_advanced
+</pre></div>
+
+<p>This will generate a config file in an advanced format:</p>
+
+<div class="highlight"><pre><span class="c1"># COMMENT OF SCRIPT HERE</span>
+<span class="nn">---</span>
+<span class="l-Scalar-Plain">tabs</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">pane1</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">commands</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo pane1</span>
+    <span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">split_vertically</span>
+  <span class="l-Scalar-Plain">pane2</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">commands</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo pane2</span>
+    <span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">split_horizontally</span>
+  <span class="l-Scalar-Plain">pane3</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">commands</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo pane3</span>
+    <span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">split_horizontally</span>
+  <span class="l-Scalar-Plain">pane4</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">commands</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo pane4</span>
+</pre></div>
+
+<p>The setting above will generate four panes in the following layout.</p>
+
+<pre><code>#################
+#       #       #
+#       #   2   #
+#       #       #
+#       #########
+#       #       #
+#   1   #   3   #
+#       #       #
+#       #########
+#       #       #
+#       #   4   #
+#       #       #
+#################
+</code></pre>
+
+<p>Available layout commands:</p>
+
+<div class="highlight"><pre><span class="n">new_tab</span>
+<span class="n">close_tab</span>
+<span class="n">goto_previous_tab</span>
+<span class="n">goto_next_tab</span>
+<span class="n">goto_previous_pane</span>
+<span class="n">goto_next_pane</span>
+<span class="n">split_vertically</span>
+<span class="n">split_horizontally</span>
+<span class="n">go_left</span>
+<span class="n">go_right</span>
+<span class="n">go_down</span>
+<span class="n">go_up</span>
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kenn">kenn</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
