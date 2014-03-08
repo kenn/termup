@@ -5,11 +5,11 @@ Automate opening up terminal tabs (or split panes) with a set of routine command
 
 It's the easiest way to get started for your projects every day.
 
-Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.8 and Ruby 1.8.7 - 1.9.3.
+Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.9 and Ruby 1.8.7 - 2.1.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
-**iTerm 1 users:** Termup 2.0 and up is not compatible with iTerm 1. Install 1.3.1 by `gem install termup -v=1.3.1`
+**For iTerm 1:** Termup 2.0 and up is not compatible with iTerm 1. Install 1.3.1 by `gem install termup -v=1.3.1`
 
 Installation
 ------------
