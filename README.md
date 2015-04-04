@@ -5,7 +5,7 @@ Automate opening up terminal tabs (or split panes) with a set of routine command
 
 It's the easiest way to get started for your projects every day.
 
-Compatible with Terminal.app and iTerm 2 on Mac OS X 10.6 - 10.9 and Ruby 1.8.7 - 2.1.
+Compatible with Terminal.app and iTerm 2 on OSX 10.6 - 10.9 and Ruby 1.8.7 - 2.2.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
@@ -19,6 +19,18 @@ $ gem install termup
 ```
 
 Note that you need to prepend `sudo` if you're using the OSX pre-installed Ruby.
+
+### When failed to build rb-appscript
+
+Termup has a dependency on the `rb-appscript` gem to bridge AppleScript, but `rb-appscript` is no longer maintained by the original author, and newer Ruby versions won't build it.
+
+To fix it, clone [the forked version](https://github.com/kenn/appscript), then run the following commands to install patched version of rb-appscript.
+
+```sh
+$ cd appscript/rb-appscript/trunk/
+$ gem build rb-appscript.gemspec
+$ gem install rb-appscript-0.6.1.gem
+```
 
 Usage
 -----
