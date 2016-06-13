@@ -9,8 +9,8 @@ Compatible with Terminal.app and iTerm2 v3 on OSX Yosemite or later.
 
 ![Split Panes](https://github.com/kenn/termup/raw/master/images/split_panes.png)
 
-**For iTerm2 v2 or earlier:** Termup 3.0 and up is not compatible with iTerm2 v2. Install Termup 2 by `gem install termup -v=2.0.3`
-**For iTerm 1:** Termup 2.0 and up is not compatible with iTerm 1. Install 1.3.1 by `gem install termup -v=1.3.1`
+- **For iTerm2 v2 or earlier:** Termup 3.0 and up is not compatible with iTerm2 v2. Install Termup 2 by `gem install termup -v=2.0.3`
+- **For iTerm 1:** Termup 2.0 and up is not compatible with iTerm 1. Install 1.3.1 by `gem install termup -v=1.3.1`
 
 Installation
 ------------
