@@ -20,6 +20,6 @@ tabs:
     commands:
       - echo pane4
     properties:
-      foreground_color: yellow
-      background_color: blue
+      foreground_color: [65535,0,0]
+      background_color: [0,0,65535]
       transparency: 0.1
