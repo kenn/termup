@@ -50,7 +50,8 @@ module Termup
     end
 
     def run(command)
-      @lines << "app.currentWindow().currentSession().write({'text':'#{command}'})"
+      escaped_command = command.gsub("'", %q(\\\')) # Escape single quotes
+      @lines << "app.currentWindow().currentSession().write({'text':'#{escaped_command}'})"
     end
 
     def set_property(key, value)

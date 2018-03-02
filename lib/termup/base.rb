@@ -9,13 +9,20 @@ module Termup
     end
 
     def start
-      script = <<-JS
+      script = <<-JS.gsub(/^\s+/, '')
         var app = Application(#{@process.pid});
         var se = Application('System Events');
         app.activate();
-        #{@lines.join(';')}
+        #{@lines.join(";\n")}
       JS
       ExecJS.exec script
+
+    rescue ExecJS::RuntimeError => e
+      script.split("\n").each.with_index do |line, i|
+        index = (i+1).to_s.rjust(3)
+        puts "#{index}: #{line}"
+      end
+      puts e.message
     end
 
     protected
